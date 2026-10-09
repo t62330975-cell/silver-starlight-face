@@ -94,7 +94,7 @@ async function display(blob){
  if(request!==sequence||current!==photoUrl)return;
  preview.hidden=false;$('face-guide').hidden=true;$('photo-tools').hidden=false;$('analysis-note').hidden=false;
  $('download-original').href=current;
- $('download-original').download='visage-original.'+({'image/png':'png','image/jpeg':'jpg','image/webp':'webp'}[blob.type]||'png');
+ $('download-original').download='cervis-original.'+({'image/png':'png','image/jpeg':'jpg','image/webp':'webp'}[blob.type]||'png');
  $('photo-meta').textContent=preview.naturalWidth+' × '+preview.naturalHeight+' · 未应用美颜';
  message('照片已就绪 · 原图保留');
  try{const detector=await model();if(request!==sequence)return;await detector.setOptions({runningMode:'IMAGE'});message(guide(detector.detect(preview),preview,false));}catch{resetChecks();message('照片已保留，自动人脸引导暂不可用');}

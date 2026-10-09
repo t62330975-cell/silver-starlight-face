@@ -45,5 +45,5 @@ export function initDemo({stopCamera,document:doc=document,download=downloadRepo
 function downloadReport(report,doc){
  const blob=new Blob([JSON.stringify(report,null,2)],{type:'application/json;charset=utf-8'});
  const url=URL.createObjectURL(blob),link=doc.createElement('a');
- link.href=url;link.download='visage-demo-report.json';doc.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ link.href=url;link.download='cervis-demo-report.json';doc.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
 }

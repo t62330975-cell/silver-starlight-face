@@ -19,7 +19,7 @@ allowed=true;await get('camera-start').events.click();assert.equal(get('shutter'
 get('camera-stop').events.click();assert.equal(stopped,1);assert.equal(get('camera-video').srcObject,null);assert.equal(get('shutter').hidden,true);
 get('face-upload').files=[{type:'image/png',size:16*1024*1024}];get('face-upload').events.change();assert.match(get('capture-status').textContent,/15 MB/);
 get('face-upload').files=[new Blob(['unaltered'],{type:'image/png'})];get('face-upload').events.change();for(let i=0;i<8;i++)await Promise.resolve();
-assert.equal(get('download-original').href,'blob:original');assert.equal(get('preview').hidden,false);assert.equal(get('download-original').download,'visage-original.png');assert.match(get('position-status').textContent,/未检测到/);
+assert.equal(get('download-original').href,'blob:original');assert.equal(get('preview').hidden,false);assert.equal(get('download-original').download,'cervis-original.png');assert.match(get('position-status').textContent,/未检测到/);
 get('retake').events.click();assert.equal(get('preview').hidden,true);assert.ok(revoked>0);
 await get('camera-start').events.click();sandbox.document.hidden=true;docEvents.visibilitychange();assert.equal(get('camera-video').srcObject,null);assert.equal(stopped,2);
 console.log('PASS: rules open/close, camera denial, close, background cleanup, upload limit, original retention, no-face detection, retake');
