@@ -26,12 +26,13 @@ export function initDemo({stopCamera,document:doc=document,download=downloadRepo
  function radar(){const points=sampleReport.dimensions.map((d,i)=>{const a=i*Math.PI/4-Math.PI/2;return (150+Math.cos(a)*d.value*1.04).toFixed(1)+','+(150+Math.sin(a)*d.value*1.04).toFixed(1)}).join(' ');get('radar-shape').setAttribute('points',points);}
  function select(key){const item=sampleReport.suggestions[key];get('advice-title').textContent=item.title;get('advice-text').textContent=item.text;doc.querySelectorAll('[data-advice]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.advice===key)));}
  doc.querySelectorAll('[data-advice]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.advice)));
+ get('view-advice').addEventListener('click',()=>{select('attention');const heading=get('advice-heading');heading.focus({preventScroll:true});heading.scrollIntoView({behavior:'auto',block:'start'});});
  button.addEventListener('click',async()=>{
   if(busy||disposed)return;
   busy=true;button.disabled=true;stopCamera();progress({status:'working',percent:0});
   let completed=0;
   try{
-   const tasks=[()=>get('demo-dimensions').innerHTML=rows(sampleReport.dimensions.slice(0,4)),()=>get('demo-dimensions').innerHTML+=rows(sampleReport.dimensions.slice(4)),radar,()=>select('morning')];
+   const tasks=[()=>get('demo-dimensions').innerHTML=rows(sampleReport.dimensions.slice(0,4)),()=>get('demo-dimensions').innerHTML+=rows(sampleReport.dimensions.slice(4)),radar,()=>{get('demo-highlights').innerHTML=rows([sampleReport.dimensions[7],sampleReport.dimensions[5],sampleReport.dimensions[0]]);get('all-metrics').open=false;select('morning')}];
    for(const task of tasks){await nextStep();if(disposed)return;task();completed++;progress({status:completed===tasks.length?'done':'working',percent:completed/tasks.length*100});}
    await nextStep();if(disposed)return;
    capture.hidden=true;report.hidden=false;get('report-title').focus();

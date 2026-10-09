@@ -2,3 +2,14 @@
 .enter-button svg{width:34px;height:38px}@media(max-width:800px){.enter-button svg{width:30px;height:34px}}
 .segmented-progress{padding:3px 5px}.progress-cells{height:12px}
 .assessment-frame{position:fixed;inset:0;width:100vw;height:100svh;z-index:20;border:0;background:#03060b;pointer-events:auto}.assessment-frame[data-ready=false]{visibility:hidden;pointer-events:none}body:has(.assessment-frame[data-ready=true]){overflow:hidden}
+
+/* CERVIS: one clear entry, quieter idle progress. */
+.hero-actions{grid-template-columns:minmax(0,1fr);justify-content:flex-start;gap:20px;width:min(39vw,520px)}
+.enter-button{grid-row:1;justify-self:start;flex-direction:row;gap:12px;padding:12px 16px;border:1px solid #ffffff55;border-radius:5px;background:#ffffff07}
+.enter-caption{font-size:14px;letter-spacing:.04em}
+#wake-control{width:100%}
+.loading-control{opacity:.55;transition:opacity .2s}
+.loading-control[data-loading=true]{opacity:1}
+.loading-label{font-size:10px;margin-bottom:8px}.loading-hint{font-size:12px}
+@media(max-width:800px){.hero-actions{grid-template-columns:1fr;width:min(86vw,420px);gap:16px}.enter-caption{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.loading-control{transition:none}}
