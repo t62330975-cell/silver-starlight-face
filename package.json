@@ -1,0 +1,1 @@
+{"name":"silver-starlight-face","private":true,"type":"module","packageManager":"pnpm@10.11.0","scripts":{"build":"node build.mjs"},"dependencies":{"@mediapipe/tasks-vision":"0.10.21","motion":"^12.23.0","react":"^19.2.0","react-dom":"^19.2.0"},"devDependencies":{"esbuild":"^0.25.0"}}

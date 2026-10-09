@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import {readFile} from 'node:fs/promises';
+import {embedAssessment} from './embed-assessment.mjs';
+const html=await readFile('dist/assessment.html','utf8'),css=await readFile('dist/assessment.css','utf8'),js=await readFile('dist/assessment.js','utf8');
+const doc=embedAssessment(html,css,js),start=doc.indexOf('<script>')+8,end=doc.lastIndexOf('</script>');
+assert.equal(doc.slice(start,end),js,'embedded bundle must be preserved byte for byte');
+assert.equal((doc.match(/<\/script>/g)||[]).length,1,'only the intended closing script tag can remain');
+new vm.Script(doc.slice(start,end));
+const literal='window.example="$& '+"$'"+' $'+String.fromCharCode(96)+'";';
+const synthetic=embedAssessment(html,'/* $& literal CSS */',literal);
+assert.ok(synthetic.includes('<script>'+literal+'</script>'));assert.ok(synthetic.includes('/* $& literal CSS */'));
+const closing=embedAssessment(html,'','window.example="</script>";');
+assert.ok(closing.includes('<\\/script>'));assert.equal((closing.match(/<\/script>/g)||[]).length,1);
+assert.ok(doc.includes('查看示例报告'));assert.ok(doc.includes('规则'));assert.ok(!doc.includes('\uFFFD'));
+console.log('PASS: literal replacement characters preserved, valid embedded JS, safe script boundary, Chinese text intact');

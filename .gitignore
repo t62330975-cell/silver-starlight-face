@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.sites-runtime/
+.openai/
+*.tar.gz
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+import {embedAssessment} from './embed-assessment.mjs';
+import {build} from 'esbuild';
+import {readFile,writeFile,cp,mkdir} from 'node:fs/promises';
+await mkdir('dist/vision/wasm',{recursive:true});
+await cp('node_modules/@mediapipe/tasks-vision/wasm','dist/vision/wasm',{recursive:true});
+await build({entryPoints:['src/assessment-client.js'],bundle:true,outfile:'dist/assessment.js',minify:true,legalComments:'eof',jsx:'automatic',loader:{'.css':'empty'},define:{'process.env.NODE_ENV':'"production"'}});
+const html=await readFile('dist/assessment.html','utf8');
+const baseCss=(await readFile('dist/assessment.css','utf8')).split('/* LatticeLoader component */')[0];
+const css=baseCss+'/* LatticeLoader component */\n'+await readFile('src/LatticeLoader.css','utf8');
+await writeFile('dist/assessment.css',css);
+const js=await readFile('dist/assessment.js','utf8');
+const document=embedAssessment(html,css,js);
+await build({entryPoints:['src/controls.jsx'],bundle:true,outfile:'dist/controls.js',minify:true,jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'},legalComments:'eof',plugins:[{name:'embedded-assessment',setup(builder){builder.onResolve({filter:/^assessment-document$/},()=>({path:'assessment-document',namespace:'embedded'}));builder.onLoad({filter:/.*/,namespace:'embedded'},()=>({contents:`export default ${JSON.stringify(document)};`,loader:'js'}));}}]});
