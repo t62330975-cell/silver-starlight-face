@@ -14,7 +14,7 @@ export async function mountTechSlogans(doc=document){
   if(!measure)return;
   let lastSize=0;
   const render=()=>{
-   const target=parseFloat(getComputedStyle(group).fontSize);
+   const target=Number(group.dataset.techSize)||parseFloat(getComputedStyle(group).fontSize);
    measure.font='800 '+target+'px Orbitron';
    if('letterSpacing' in measure)measure.letterSpacing=(-.035*target)+'px';
    const longest=Math.max(...roots.map(({text})=>measure.measureText(text).width));
