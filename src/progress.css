@@ -16,9 +16,13 @@
 
 /* Interactive silver TechText, retaining the original scroll-driven line wrappers. */
 .hero-stack{width:100%}
-.hero-copy h1[data-tech-slogan]{width:100%;font-family:Orbitron,Arial,sans-serif;font-size:clamp(34px,5.1vw,86px);font-weight:700;letter-spacing:-.035em;line-height:1.18;transform:translateY(-18px)}
+.hero-copy h1[data-tech-slogan]{width:100%;font-family:Orbitron,Arial,sans-serif;font-size:clamp(34px,5.1vw,86px);font-weight:900;letter-spacing:-.035em;line-height:1.18;transform:translateY(-18px)}
 .hero-copy h1[data-tech-slogan]>[data-tech-line]{height:calc(var(--tech-size,1em)*1.4);margin-block:-.08em;color:#fff;pointer-events:auto}
 .hero-copy h1[data-tech-slogan] .tech-text{font-size:var(--tech-size);background:none}
 .hero-actions{margin-top:20px}
 @media(max-width:800px){.hero-copy h1[data-tech-slogan]{font-size:clamp(30px,8.3vw,62px);transform:translateY(-12px)}}
 @media(max-height:520px){.hero-copy h1[data-tech-slogan]{font-size:clamp(26px,4.3vw,52px);transform:translateY(-8px)}}
+
+/* Static slogan position: no scroll reveal or surplus scroll canvas. */
+body{min-height:100svh}
+.hero-copy h1[data-tech-slogan]>[data-tech-line]{will-change:auto;transform:none;opacity:1;filter:none}
