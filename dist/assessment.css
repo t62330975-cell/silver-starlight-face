@@ -59,7 +59,7 @@ main{max-width:1200px}
 
 @font-face{font-family:Orbitron;src:url('fonts/Orbitron.ttf') format('truetype');font-weight:400 900;font-display:swap}
 .capture-heading>div{width:min(100%,760px)}
-.capture-heading .capture-slogan[data-tech-slogan]{width:100%;font-family:Orbitron,Arial,sans-serif;font-size:clamp(30px,3.5vw,48px);font-weight:900;letter-spacing:-.035em;line-height:1.2}
+.capture-heading .capture-slogan[data-tech-slogan]{width:100%;font-family:Orbitron,Arial,sans-serif;font-size:clamp(30px,3.5vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.2}
 .capture-slogan[data-tech-slogan]>[data-tech-line]{height:calc(var(--tech-size,1em)*1.4);margin-block:-.08em;white-space:nowrap}
 .capture-slogan .tech-text{font-size:var(--tech-size)}
 .capture-heading .capture-slogan{margin-left:-2.6%}
