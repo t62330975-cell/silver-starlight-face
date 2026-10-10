@@ -39,3 +39,11 @@ body{min-height:100svh}
  .hero-copy h1[data-tech-size="200"]{width:min(46vw,860px)}
 }
 @media(max-width:800px){.hero-copy{padding-left:3%;padding-right:3%}}
+
+/* Compact brand mark beside the capture entry, with progress beneath both. */
+.hero-actions{grid-template-columns:max-content minmax(0,1fr);column-gap:18px;row-gap:16px;align-items:center}
+.hero-actions .enter-button{grid-column:1;grid-row:1}
+.hero-actions #wake-control{grid-column:1 / -1;grid-row:2}
+.hero-actions .stellar-emblem{position:relative;inset:auto;grid-column:2;grid-row:1;justify-self:start;width:clamp(56px,6vw,84px);height:auto;aspect-ratio:1;opacity:1;flex-shrink:0}
+@media(max-width:800px){.hero-actions{column-gap:12px;row-gap:14px;grid-template-columns:max-content minmax(0,1fr)}.hero-actions .stellar-emblem{width:clamp(52px,12vw,64px);height:auto}}
+@media(max-height:480px){.hero-actions .stellar-emblem{width:52px;height:auto}}
