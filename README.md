@@ -34,6 +34,7 @@
 - React 19 + esbuild：主页加载控件、报告状态组件与内嵌采集界面。
 - MediaPipe Tasks Vision 0.10.21：浏览器本地人脸关键点引导。
 - Canvas 2D / CSS：检测页星河、流星、轨道标志、扫描框与规则弹窗。
+- React Bits TechText：银白科技字体、字母轮廓揭示与鼠标选框；主页保留滚动文字动画。
 - React Bits LatticeLoader：点阵状态、耗时及报告准备进度。
 - 内嵌页面构建使用替换回调，避免组件脚本中的特殊字符被误处理。
 
@@ -61,6 +62,7 @@ node test-capture.mjs
 node test-demo.mjs
 node test-scene.mjs
 node test-embedding.mjs
+node test-techtext.mjs
 ```
 
 这些检查覆盖模拟摄像头权限与清理、原图保留、上传限制、规则弹窗、示例隔离、报告准备失败重试、减少动态效果，以及嵌入脚本与中文文本完整性。它们不替代实机摄像头及浏览器视觉测试。
@@ -76,7 +78,7 @@ node test-embedding.mjs
 
 粒子视觉方向参考 [isladjan/particles-playground](https://github.com/isladjan/particles-playground)，当前着色器及轨迹逻辑独立编写。人脸图与星轨标志由项目创作者提供。
 
-Righteous 与 Orbitron 字体的 OFL 许可保留在 `dist/fonts/`。LatticeLoader 源码来自项目创作者提供的 React Bits 组件说明。MediaPipe 依赖的来源与版本见 `package.json` 及 `pnpm-lock.yaml`。本仓库不对第三方素材和组件重新授权。
+Righteous 与 Orbitron 字体的 OFL 许可保留在 `dist/fonts/`。TechText 与 LatticeLoader 源码来自项目创作者提供的 React Bits 组件说明。MediaPipe 依赖的来源与版本见 `package.json` 及 `pnpm-lock.yaml`。本仓库不对第三方素材和组件重新授权。
 
 ## 后续方向
 

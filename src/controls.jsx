@@ -1,3 +1,4 @@
+import {mountTechSlogans} from './tech-slogan.jsx';
 import React,{useState,useEffect,useRef} from 'react';
 import {createRoot} from 'react-dom/client';
 import './progress.css';
@@ -25,3 +26,5 @@ function Controls(){
  return <><div className="loading-control" data-loading={page==='loading'}><div className="loading-label"><span>{status}</span><span>{progress}%</span></div><div className="segmented-progress" role="progressbar" aria-label="面部照片界面加载进度" aria-valuemin={0} aria-valuemax={100} aria-valuenow={progress}><div className="progress-cells" aria-hidden="true">{Array.from({length:14},(_,i)=><span key={i} className={i<Math.floor(progress/100*14)?'is-loaded':''}/>)}</div></div><div className="loading-hint" role="status">{message}</div></div>{page!=='home'&&<iframe ref={frameRef} allow="camera" className="assessment-frame" title="面部照片界面" data-ready={page==='ready'} srcDoc={assessmentDocument} onLoad={ready}/>}</>;
 }
 createRoot(document.getElementById('wake-control')).render(<Controls/>);
+
+mountTechSlogans();

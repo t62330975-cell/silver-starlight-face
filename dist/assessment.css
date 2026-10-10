@@ -56,6 +56,15 @@ main{max-width:1200px}
 @media(max-width:900px){.capture-layout{grid-template-columns:minmax(0,1fr) 230px;gap:24px}.report-overview{gap:24px}}
 @media(max-width:700px){.capture-layout{grid-template-columns:1fr;gap:24px}.capture-side{padding-top:0}.capture-heading{margin-bottom:24px}.capture-heading .subline{font-size:13px}.report-overview{grid-template-columns:1fr;gap:12px}.sample-intro{margin-top:24px}.highlight-metrics{gap:8px}.highlight-metrics .metric{padding:16px 10px}.highlight-metrics .metric-number{font-size:32px}.highlight-metrics .metric-title{flex-direction:column;align-items:flex-start;gap:6px}.highlight-metrics .metric h3{font-size:13px}.highlight-metrics .metric p{display:none}.focus-heading h2{font-size:20px}.focus-heading button{font-size:12px;padding:10px 12px}.capture-actions button{font-size:14px}}
 
+
+@font-face{font-family:Orbitron;src:url('fonts/Orbitron.ttf') format('truetype');font-weight:400 900;font-display:swap}
+.capture-heading>div{width:min(100%,760px)}
+.capture-heading .capture-slogan[data-tech-slogan]{width:100%;font-family:Orbitron,Arial,sans-serif;font-size:clamp(30px,3.5vw,48px);font-weight:700;letter-spacing:-.035em;line-height:1.2}
+.capture-slogan[data-tech-slogan]>[data-tech-line]{height:calc(var(--tech-size,1em)*1.4);margin-block:-.08em;white-space:nowrap}
+.capture-slogan .tech-text{font-size:var(--tech-size)}
+.capture-heading .capture-slogan{margin-left:-2.6%}
+@media(max-width:700px){.capture-heading>div{width:100%}.capture-heading .capture-slogan[data-tech-slogan]{font-size:clamp(26px,6.4vw,38px)}}
+
 /* LatticeLoader component */
 .lattice-loader {
   --ll-n: 3;
@@ -299,3 +308,23 @@ main{max-width:1200px}
     filter: none;
   }
 }
+
+/* TechText component */
+.tech-text {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.tech-text-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+
+.tech-text-fallback{position:absolute;left:5%;top:50%;transform:translateY(-50%);white-space:nowrap;font:inherit;letter-spacing:inherit;color:#fff}
+.tech-text[data-rendered=true] .tech-text-fallback{visibility:hidden}
+.tech-text{pointer-events:auto}

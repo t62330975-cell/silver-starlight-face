@@ -1,3 +1,4 @@
+import {mountTechSlogans} from './tech-slogan.jsx';
 import {mountReportProgress} from './report-progress.jsx';
 import {initAssessmentScene} from './assessment-scene.js';
 import {initDemo} from './demo-report.js';
@@ -123,3 +124,5 @@ rules.addEventListener('click',e=>{if(e.target!==rules)return;const r=rules.getB
 initDemo({progress:mountReportProgress($('report-progress')),stopCamera:()=>{stop();resetChecks();message('摄像头已关闭，可重新打开或上传照片');}});
 initAssessmentScene();
 })();
+
+if(typeof mountTechSlogans==='function')mountTechSlogans();
