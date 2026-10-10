@@ -47,3 +47,12 @@ body{min-height:100svh}
 .hero-actions .stellar-emblem{position:relative;inset:auto;grid-column:2;grid-row:1;justify-self:start;width:clamp(56px,6vw,84px);height:auto;aspect-ratio:1;opacity:1;flex-shrink:0}
 @media(max-width:800px){.hero-actions{column-gap:12px;row-gap:14px;grid-template-columns:max-content minmax(0,1fr)}.hero-actions .stellar-emblem{width:clamp(52px,12vw,64px);height:auto}}
 @media(max-height:480px){.hero-actions .stellar-emblem{width:52px;height:auto}}
+
+/* The brand belongs to the entry row, matching the marked reference position. */
+.hero-actions{grid-template-columns:minmax(0,1fr)}
+.hero-entry-row{grid-column:1 / -1;grid-row:1;display:flex;align-items:center;justify-content:flex-start;gap:clamp(24px,4vw,48px);width:100%;min-width:0}
+.hero-entry-row .enter-button{flex-shrink:0}
+.hero-entry-row .entry-logo{position:relative;inset:auto;margin:0;flex:0 0 auto;width:clamp(84px,9vw,112px);height:clamp(84px,9vw,112px);opacity:1;pointer-events:none}
+@media(max-width:800px){.hero-entry-row{gap:20px}.hero-entry-row .entry-logo{width:clamp(64px,18vw,84px);height:clamp(64px,18vw,84px)}}
+@media(max-width:360px){.hero-entry-row{gap:14px}.hero-entry-row .entry-logo{width:60px;height:60px}}
+@media(max-height:480px){.hero-entry-row .entry-logo{width:64px;height:64px}}
